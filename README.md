@@ -22,6 +22,9 @@ This is the command you will use before deploying your project, there will be se
 
 ## Workshop Materials
 
+### Presentation Links
+* [Frontend Presentation](https://docs.google.com/presentation/d/1IpCE6daZd2mPSAxd5K0VsgUuOdMfB0RSO1jiociPraU/edit?usp=sharing)
+
 ### Video Links
 
 * [TBD](https://google.com/)
