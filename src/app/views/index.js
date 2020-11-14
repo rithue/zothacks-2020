@@ -1,1 +1,1 @@
-export { default as UserList } from "./user-list/userList";
+export { default as MovieList } from "./movie-list/movieList";

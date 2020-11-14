@@ -1,35 +1,39 @@
+import MovieListItem from 'app/components/movie-list-item/movieListItem';
 import React, {Component} from 'react'
 
 //generates list of movieListItem components
 
-class TodoList extends Component {
+class MovieList extends Component {
     constructor(props) {
         super(props)
         this.state = {
             //todos is movies
-            todos: []
+            movies: [{"title":"movie1","description":"smth","year":2019},
+            {"title":"movie2","description":"smth1","year":2018}]
         }
     }
-    componentDidMount() {
-        //this will be the movie controller
-        //findAll method is filter
-        controller.findAll(this.done);
-    }
+    // componentDidMount() {
+    //     //this will be the movie controller
+    //     //findAll method is filter
+    //     controller.findAll(this.done);
+    // }
 
-    done = (todos) => {
+    done = (movies) => {
         //this is returned callback (list of key value pairs with movie info)
-        this.setState({ todos: todos });
+        this.setState({ movies: movies });
     }
 
     render() {
         //this should display the given info
         return (
-            <div className="user-list">
+            <div className="movie-list">
                 {/*users is movies*/}
-                {(users || []).map(function (user, index) {
-                    return <UserCard user={user} key={index} number={index}/>;
+                {this.state.movies.map((movie, idx) => {
+                    return(<MovieListItem key={idx} movie={movie} number={idx}/>);
                 })}
             </div>
         )
     }
 }
+
+export default MovieList;
