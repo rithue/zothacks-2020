@@ -1,1 +1,1 @@
-export { default as UserCard } from "./user-card/userCard";
+export { default as UserCard } from "./movie-list-item/movieListItem";
