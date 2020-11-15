@@ -4,15 +4,12 @@ import axios from "axios";
 import wrapper from "axios-cache-plugin";
 
 let http = wrapper(axios, {
-    maxCacheSize: 1000,
+    maxCacheSize: 100000,
     ttl: 600000
 })
 
 let year1 = 0;
-http.__addFilter(/get-details/|/get-popular-movies-by-genre/)
-http.__addFilter()
-http.__addFilter(/lookup/)
-http.__addFilter(/images/)
+http.__addFilter(/(get-details|get-popular-movies-by-genre|lookup|images)/);
 
 class MovieController {
   //let movlist = [];
