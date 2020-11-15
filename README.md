@@ -1,2 +1,2 @@
 # zothacks-2020
-Movie generator
+Movie generator - ZotFlix
