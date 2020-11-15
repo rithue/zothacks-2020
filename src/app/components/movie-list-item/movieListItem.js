@@ -54,7 +54,7 @@ function MovieListItem({ movie , number}) {
         </CardContent>
       </CardActionArea>
       <CardActions style={{justifyContent: 'center'}}>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" href={movie.url}>
           Watch now
         </Button>
       </CardActions>

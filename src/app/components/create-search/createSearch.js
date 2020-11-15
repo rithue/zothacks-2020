@@ -31,6 +31,7 @@ function CreateSearch({setFilters}){
         if (netflix != ""){
             services.push(netflix)
         }
+
         if (amazonP != ""){
             services.push(amazonP)
         }
