@@ -9,6 +9,7 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 // Website imports for classes you made
 import { MovieList } from "app/views";
+import { HomePage } from "app/views";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
           <Route 
             exact path={"/"}
             component={MovieList}
+          />
+          <Route 
+            exact path={"/search"}
+            component={HomePage}
           />
         </Switch>
       </Router>
