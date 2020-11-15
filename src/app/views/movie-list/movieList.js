@@ -7,7 +7,7 @@ import React, {Component} from 'react'
 class MovieList extends Component {
     constructor(props) {
         super(props)
-        console.log(props.filters);
+        console.log('props.filters:',props.filters);
         this.state = {
             filters: props.filters,
             //todos is movies
@@ -23,7 +23,9 @@ class MovieList extends Component {
     componentDidMount() {
         //this will be the movie controller
         //findAll method is filter
-        MovieController.getMoviesByGenre(['hulu','netflix'],'comedy',2019,this.done);
+        //console.log('this.state:',this.state)
+        MovieController.getMoviesByGenre(this.state.filters.streamingService,this.state.filters.genre,this.state.filters.releaseYear,this.done);
+        //MovieController.getMoviesByGenre(['hulu','netflix'],'comedy',2019,this.done);
     }
     
 

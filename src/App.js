@@ -22,6 +22,7 @@ function App() {
             <HomePage setFilters={setFilters}></HomePage> 
           </Route>
           <Route exact path={"/movies"}>
+            {console.log('in router',filters)}
             <MovieList filters = {filters}></MovieList>
           </Route> 
             

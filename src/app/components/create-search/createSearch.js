@@ -5,7 +5,7 @@ import axios from "axios";
 import "./createSearch.scss"
 
 function CreateSearch({setFilters}){
-    const [streamingService, setStreamingService] = useState(null);
+    const [streamingService, setStreamingService] = useState("");
     const [genre, setGenre] = useState("");
     const [releaseYear, setReleaseYear] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -24,81 +24,13 @@ function CreateSearch({setFilters}){
     const [iTVHub, setITVHub] = useState("");
 
 
-    /*function search(){
-        
-
-        var chkNetflix = document.getElementById("chkNetflix");
-        if (chkNetflix.checked ){
-            services.push(chkNetflix.value)
-        }
-        var chkAmazonP = document.getElementById("chkAmazonP");
-        if (chkAmazonP.checked){
-            services.push(chkAmazonP.value)
-        }
-        var chkAmazonI = document.getElementById("cchkAmazonI");
-        if (chkAmazonI.checked){
-            services.push(chkAmazonI.value)
-        }
-        var chkiTunes = document.getElementById("chkiTunes");
-        if (chkiTunes.checked){
-            services.push(chkiTunes.value)
-        }
-        var chkNowTV = document.getElementById("chkNowTV");
-        if (chkNowTV.checked){
-            services.push(chkNowTV.value)
-        }
-        var chkTalTalk = document.getElementById("chkTalTalk");
-        if (chkTalTalk.checked){
-            services.push(chkTalTalk.value)
-        }
-        var chkGooglePlay = document.getElementById("chkGooglePlay");
-        if (chkGooglePlay.checked){
-            services.push(chkGooglePlay.value)
-        }
-        var chkBBC = document.getElementById("chkBBC");
-        if (chkBBC.checked){
-            services.push(chkBBC.value)
-        }
-        var chkAll4 = document.getElementById("chkAll4");
-        if (chkAll4.checked){
-            services.push(chkAll4.value)
-        }
-        var chkMy5 = document.getElementById("chkMy5");
-        if (chkMy5.checked){
-            services.push(chkMy5.value)
-        }
-        var chkRakutenTV = document.getElementById("chkRakutenTV");
-        if (chkRakutenTV.checked){
-            services.push(chkRakutenTV.value)
-        }
-        var chkITVHub = document.getElementById("chkITVHub");
-        if (chkITVHub.checked){
-            services.push(chkITVHub.value)
-        }
-
-        setStreamingService(services);
-
-
-        filters = {
-            streamingService: streamingService,
-            genre: genre,
-            releaseYear: releaseYear
-        };
-
-        //pass filters to moviecontroller
-        //change to movielist page
-
-    }*/
-
+    
     async function check() {
         var services = [];
 
         if (netflix != ""){
             services.push(netflix)
         }
-        console.log(netflix);
-        console.log(services);
-
         if (amazonP != ""){
             services.push(amazonP)
         }
@@ -203,7 +135,6 @@ function CreateSearch({setFilters}){
                 to={{
                     pathname: "/movies",
                 }}
-                activeStyle={{ color: 'white' }}
             >SUMBIT</Link>
 
             <p id="error-message"></p>

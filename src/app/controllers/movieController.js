@@ -9,6 +9,7 @@ let http = wrapper(axios, {
 })
 
 let year1 = 0;
+let services1 = []
 http.__addFilter(/(get-details|get-popular-movies-by-genre|lookup|images)/);
 
 class MovieController {
@@ -16,13 +17,14 @@ class MovieController {
   
   getMoviesByGenre(services, genre, year, callback) {
     year1 = year;
+    services1 = services
 
     http({
       method: 'GET',
       url: 'https://imdb8.p.rapidapi.com/title/get-popular-movies-by-genre',
       params: { genre: '/chart/popular/genre/' + genre },
       headers: {
-        'x-rapidapi-key': '8daca9295dmsh3658593960d9b85p1decf8jsn4e6c538cf332',
+        'x-rapidapi-key': '0a29a2e762msh8aba990f87409bfp16aa51jsnfb0cef502b74',
         'x-rapidapi-host': 'imdb8.p.rapidapi.com'
       }
     }).then((response) => {
@@ -31,11 +33,11 @@ class MovieController {
         console.log('in genre:',Array.isArray(response1),response1)
         callback(response1);
       //   callback([
-      //     {title: "The Witchestest", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106},
+      //     {title: "The Witches", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106},
       //     {icon: "https://m.media-amazon.com/images/M/MV5BZmY2ZmM5YTktZThiOC00YjEzLTg4YTctMDAxYWEyZmEyZDlhXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg",
       //         runtime: 95,
       //         service: "Amazon Prime Video",
-      //         title: "Borat Subsequent Moviefilmtest"}
+      //         title: "Borat Subsequent Moviefilm"}
       // ])
       })
     }).catch(function (error) {
@@ -57,13 +59,13 @@ class MovieController {
         params: { 'tconst': item_array[2] },
         //params: {'tconst': 'tt0944947'},
         headers: {
-          'x-rapidapi-key': '8daca9295dmsh3658593960d9b85p1decf8jsn4e6c538cf332',
+          'x-rapidapi-key': '0a29a2e762msh8aba990f87409bfp16aa51jsnfb0cef502b74',
           'x-rapidapi-host': 'imdb8.p.rapidapi.com'
         }
       }).then((response) => {
         console.log(response.data.title);
         console.log(response.data.year)
-        if (response.data.year == 2020) {
+        if (response.data.year == year1) {
           this.movieFilterService(response.data.title, response.data.image.url, response.data.runningTimeInMinutes, function (response) {
             movlist.push(response);
             //movlist.push({title: "The Witchestest", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106});
@@ -88,7 +90,7 @@ class MovieController {
         'x-rapidapi-host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
       }
     }).then((response) => {
-      if (response.data.results[0] != null) {
+      if (response.data.results[0] != null /*&& services1.includes(response.data.results[0].locations[0].display_name)*/) {
         console.log(response.data.results[0].locations[0].display_name);
         //console.log({"title":title,"icon":imageurl,"service":response.data.results[0].locations[0].display_name,"runtime":runtime})
         callback({ "title": title, "icon": imageurl, "service": response.data.results[0].locations[0].display_name, "runtime": runtime });
