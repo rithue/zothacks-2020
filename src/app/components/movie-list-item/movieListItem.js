@@ -13,7 +13,7 @@ function MovieListItem({ movie , number}) {
         {movie.title}
       </h2>
       <h3>Available on: {movie.service}</h3>
-      <h4>{movie.description}</h4>
+      <h4>{movie.runtime}</h4>
     </div>
   );
 }
