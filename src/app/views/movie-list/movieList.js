@@ -1,4 +1,5 @@
 import MovieListItem from 'app/components/movie-list-item/movieListItem';
+import MovieController from 'app/controllers/movieController'
 import React, {Component} from 'react'
 
 //generates list of movieListItem components
@@ -12,11 +13,11 @@ class MovieList extends Component {
             {"title":"movie2","description":"smth1","year":2018}]
         }
     }
-    // componentDidMount() {
-    //     //this will be the movie controller
-    //     //findAll method is filter
-    //     controller.findAll(this.done);
-    // }
+    componentDidMount() {
+        //this will be the movie controller
+        //findAll method is filter
+        MovieController.getMoviesByGenre(['hulu','netflix'],'comedy',2019,this.done);
+    }
 
     done = (movies) => {
         //this is returned callback (list of key value pairs with movie info)
