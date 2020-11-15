@@ -15,16 +15,23 @@ class MovieController {
       url: 'https://imdb8.p.rapidapi.com/title/get-popular-movies-by-genre',
       params: { genre: '/chart/popular/genre/' + genre },
       headers: {
-        'x-rapidapi-key': '8ff418ea57msh9e66f4691395d21p124af9jsndfa3c31fdb8b',
+        'x-rapidapi-key': '8daca9295dmsh3658593960d9b85p1decf8jsn4e6c538cf332',
         'x-rapidapi-host': 'imdb8.p.rapidapi.com'
       }
     };
 
     axios.request(options).then((response) => {
       console.log(response.data);
-      this.movieFilterYear(response.data, function (response){
-        console.log('in genre:',response)
-        callback(response);
+      this.movieFilterYear(response.data, function (response1){
+        console.log('in genre:',Array.isArray(response1),response1)
+        callback(response1);
+      //   callback([
+      //     {title: "The Witchestest", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106},
+      //     {icon: "https://m.media-amazon.com/images/M/MV5BZmY2ZmM5YTktZThiOC00YjEzLTg4YTctMDAxYWEyZmEyZDlhXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg",
+      //         runtime: 95,
+      //         service: "Amazon Prime Video",
+      //         title: "Borat Subsequent Moviefilmtest"}
+      // ])
       })
     }).catch(function (error) {
       console.error(error);
@@ -32,10 +39,10 @@ class MovieController {
 
 
   }
-  movieFilterYear(idlist, callback) {
+  async movieFilterYear(idlist, callback) {
     let movlist = []
     for (let i = 0; i < idlist.length; i++) {
-      if (i >= 4) {
+      if (i >= 10) {
         break;
       }
       var item_array = idlist[i].split('/');
@@ -45,17 +52,18 @@ class MovieController {
         params: { 'tconst': item_array[2] },
         //params: {'tconst': 'tt0944947'},
         headers: {
-          'x-rapidapi-key': '8ff418ea57msh9e66f4691395d21p124af9jsndfa3c31fdb8b',
+          'x-rapidapi-key': '8daca9295dmsh3658593960d9b85p1decf8jsn4e6c538cf332',
           'x-rapidapi-host': 'imdb8.p.rapidapi.com'
         }
       };
 
-      axios.request(options1).then((response) => {
+      await axios.request(options1).then((response) => {
         console.log(response.data.title);
         console.log(response.data.year)
         if (response.data.year == 2020) {
           this.movieFilterService(response.data.title, response.data.image.url, response.data.runningTimeInMinutes, function (response) {
             movlist.push(response);
+            //movlist.push({title: "The Witchestest", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106});
           })
           //console.log('here')
           console.log(response.data.title)
@@ -64,6 +72,7 @@ class MovieController {
         console.error(error);
       });
     }
+    console.log('moviefilteryear:',movlist)
     callback(movlist);
   }
   movieFilterService = function (title, imageurl, runtime, callback) {

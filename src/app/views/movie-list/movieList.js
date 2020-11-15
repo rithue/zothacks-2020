@@ -9,8 +9,13 @@ class MovieList extends Component {
         super(props)
         this.state = {
             //todos is movies
-            movies: [{"title":"movie1","description":"smth","year":2019},
-            {"title":"movie2","description":"smth1","year":2018}]
+            movies: [
+                // {title: "The Witchestest", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106},
+                // {icon: "https://m.media-amazon.com/images/M/MV5BZmY2ZmM5YTktZThiOC00YjEzLTg4YTctMDAxYWEyZmEyZDlhXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg",
+                //     runtime: 95,
+                //     service: "Amazon Prime Video",
+                //     title: "Borat Subsequent Moviefilmtest"}
+            ]
         }
     }
     componentDidMount() {
@@ -18,18 +23,23 @@ class MovieList extends Component {
         //findAll method is filter
         MovieController.getMoviesByGenre(['hulu','netflix'],'comedy',2019,this.done);
     }
+    
 
     done = (movies) => {
         //this is returned callback (list of key value pairs with movie info)
-        this.setState({ movies: movies });
+        this.setState({movies: movies}, (items) => (
+            console.log('in movie list cosole:',Array.isArray(items), items)
+        ));
     }
 
     render() {
         //this should display the given info
         return (
             <div className="movie-list">
+                {console.log(typeof this.state.movies, this.state.movies)}
                 {/*users is movies*/}
                 {this.state.movies.map((movie, idx) => {
+                    {console.log('in movie list',movie)}
                     return(<MovieListItem key={idx} movie={movie} number={idx}/>);
                 })}
             </div>
