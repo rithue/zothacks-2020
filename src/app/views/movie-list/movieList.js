@@ -7,7 +7,9 @@ import React, {Component} from 'react'
 class MovieList extends Component {
     constructor(props) {
         super(props)
+        console.log(props.filters);
         this.state = {
+            filters: props.filters,
             //todos is movies
             movies: [
                 // {title: "The Witchestest", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106},

@@ -1,5 +1,5 @@
 // React and CSS Imports
-import React from "react";
+import React, {useState} from 'react';
 import "./App.scss";
 import "globals/hack-styles.scss";
 import '../node_modules/react-vis/dist/style.css';
@@ -12,18 +12,19 @@ import { MovieList } from "app/views";
 import { HomePage } from "app/views";
 
 function App() {
+  const [filters, setFilters] = useState(null);
+
   return (
     <div className="app fill-view">
       <Router>
         <Switch>
-          <Route 
-            exact path={"/"}
-            component={MovieList}
-          />
-          <Route 
-            exact path={"/search"}
-            component={HomePage}
-          />
+          <Route exact path={"/"}> 
+            <HomePage setFilters={setFilters}></HomePage> 
+          </Route>
+          <Route exact path={"/movies"}>
+            <MovieList filters = {filters}></MovieList>
+          </Route> 
+            
         </Switch>
       </Router>
     </div>

@@ -5,7 +5,7 @@
     font-size: 0.8em;
     width: 20em;
     padding: $medium-spacing;
-    background-color: $ember-blue;
+    background-color: grey;
     border-radius: $tiny-spacing;
 
     position: fixed;
@@ -17,9 +17,17 @@
 
 label {
     color: white;
-    display: bloack;
+    display: block;
     margin-bottom: $tiny-spacing;
     font-weight: bold;
+}
+
+.mylink {
+
+}
+
+h1 {
+    color: white;
 }
 
 input[type="text"],
