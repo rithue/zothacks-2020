@@ -1,9 +1,8 @@
 //homepage view with form and button
-//button clicked -> movieList view is displayed
+//button clicked -> emissions is displayed
 
 import React, {Component} from 'react'
 import {CreateSearch} from "app/components";
-import {MovieList} from "app/views"
 
 
 function HomePage({setFilters}){

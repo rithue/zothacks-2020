@@ -16,8 +16,8 @@ class MovieController {
   //let movlist = [];
   
   getMoviesByGenre(services, genre, year, callback) {
-    year1 = year;
-    services1 = services
+    /*year1 = year;
+    services1 = services;
 
     http({
       method: 'GET',
@@ -31,15 +31,15 @@ class MovieController {
       console.log(response.data);
       this.movieFilterYear(response.data, function (response1){
         console.log('in genre:',Array.isArray(response1),response1)
-        callback(response1);
-        // callback([
-        //   {title: "The Witches", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106, url: "https://www.google.com"},
-        //   {title: "V for Vendetta", icon: "https://m.media-amazon.com/images/M/MV5BOTI5ODc3NzExNV5BMl5BanBnXkFtZTcwNzYxNzQzMw@@._V1_.jpg", service: "Google Play", runtime: 132, url: "https://www.amazon.com/V-Vendetta-Natalie-Portman/dp/B000HVHM5S/ref=sr_1_1?crid=2TJHMWUVUUXP2&dchild=1&keywords=prime+videonv+f0r+vendetta&qid=1605440953&sprefix=panthai%2Caps%2C218&sr=8-1"}
-        // ])
-      })
+        callback(response1);*/
+        callback([
+           {title: "The Witches", icon: "https://m.media-amazon.com/images/M/MV5BNjRkYjlhMj…M2UzNDJkNTU2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", service: "Amazon Instant Video", runtime: 106, url: "https://www.google.com"},
+           {title: "V for Vendetta", icon: "https://m.media-amazon.com/images/M/MV5BOTI5ODc3NzExNV5BMl5BanBnXkFtZTcwNzYxNzQzMw@@._V1_.jpg", service: "Google Play", runtime: 132, url: "https://www.amazon.com/V-Vendetta-Natalie-Portman/dp/B000HVHM5S/ref=sr_1_1?crid=2TJHMWUVUUXP2&dchild=1&keywords=prime+videonv+f0r+vendetta&qid=1605440953&sprefix=panthai%2Caps%2C218&sr=8-1"}
+         ])
+      /*})
     }).catch(function (error) {
       console.error(error);
-    });
+    });*/
   }
   
   async movieFilterYear(idlist, callback) {

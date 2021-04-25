@@ -3,9 +3,9 @@
 
 .myForm{
     font-size: 0.8em;
-    width: 20em;
+    width: 30em;
     padding: $medium-spacing;
-    background-color: grey;
+    background-color: rgb(218, 202, 231);
     border-radius: $tiny-spacing;
 
     position: fixed;
@@ -15,23 +15,18 @@
     z-index: 1;
 }
 
-label {
-    color: white;
-    display: block;
-    margin-bottom: $tiny-spacing;
-    font-weight: bold;
-}
 
-.mylink {
-
-}
 
 h1 {
-    color: white;
+    color: #984063;
 }
 
-input[type="text"],
-input[type="year"],
+h2 {
+    color: #41436A;
+}
+
+input[type="startZip"],
+input[type="endZip"],
 select {
     border-radius: $tiny-spacing;
     display: block;
